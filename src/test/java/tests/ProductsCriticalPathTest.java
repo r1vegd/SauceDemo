@@ -44,20 +44,57 @@ public class ProductsCriticalPathTest extends BaseTest {
     }
 
     @Test
+    public void proceedToCheckOutYourInformation() {
+        loginPage.open();
+        loginPage.login("standard_user", "secret_sauce");
+
+        inventoryPage.addToCartFirstProduct("Sauce Labs Onesie");
+        inventoryPage.moveToCartPage();
+        cartPage.checkoutCart();
+        Assert.assertTrue(checkoutYourInformationPage.firstNameCheckoutDisplayed(),
+                "Поле ввода имени не отображается");
+        Assert.assertTrue(checkoutYourInformationPage.lastNameCheckoutDisplayed(),
+                "Поле ввода фамилии не отображается");
+        Assert.assertTrue(checkoutYourInformationPage.zipPostalCodeCheckoutDisplayed(),
+                "Поле ввода ZIP не отображается");
+    }
+
+    @Test
     public void checkInventoryItemPageProduct() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
 
+        String expectedInventoryItemName = inventoryPage.getInventoryFirstItemName();
+        String expectedInventoryItemDesc = inventoryPage.getInventoryFirstItemDesc();
+        String expectedInventoryItemPrice = inventoryPage.getInventoryFirstItemPrice();
+
         inventoryPage.moveIntoInventoryItem();
-//        Assert.assertEquals(inventoryItemPage.getInventoryDetailedItemName(),
-//                inventoryPage.getInventoryFirstItemName(),
-//                "Имя товара не совпадает" );
-//        Assert.assertEquals(inventoryItemPage.getInventoryDetailedItemDesc(),
-//                inventoryPage.getInventoryFirstItemDesc(),
-//                "Описание товара не совпадает");
-//        Assert.assertEquals(inventoryPage.getInventoryFirstItemPrice(),
-//                inventoryItemPage.getInventoryDetailedItemPrice(),
-//                "Цена товара не совпадает");
+        String actualInventoryDetailedItemName = inventoryItemPage.getInventoryDetailedItemName();
+        String actualInventoryDetailedItemDesc = inventoryItemPage.getInventoryDetailedItemDesc();
+        String actualInventoryDetailedItemPrice = inventoryItemPage.getInventoryDetailedItemPrice();
+
+        Assert.assertEquals(actualInventoryDetailedItemName,
+                expectedInventoryItemName,
+                "Имя товара не совпадает");
+        Assert.assertEquals(actualInventoryDetailedItemDesc,
+                expectedInventoryItemDesc,
+                "Описание товара не совпадает");
+        Assert.assertEquals(actualInventoryDetailedItemPrice,
+                expectedInventoryItemPrice,
+                "Цена товара не совпадает");
+    }
+
+    @Test
+    public void productCanBeDeletedFromCart() {
+        loginPage.open();
+        loginPage.login("standard_user", "secret_sauce");
+
+        inventoryPage.addToCartFirstProduct("Sauce Labs Onesie");
+        inventoryPage.moveToCartPage();
+
+        cartPage.removeCartItem();
+        Assert.assertTrue(cartPage.removedCartItemLineDisplayed(),
+                "Корзина не очищена");
     }
 
 

@@ -11,7 +11,6 @@ public class InventoryItemPage extends BasePage {
     public static final String ADD_TO_CART_DETAILED_ITEM_BUTTON = "//button[@class='btn btn_primary btn_small btn_inventory']";
     public static final String BACK_TO_PRODUCTS_BUTTON = "//button[@class='btn btn_secondary back btn_large inventory_details_back_button']";
 
-
     public InventoryItemPage(WebDriver driver) {
         super(driver);
     }

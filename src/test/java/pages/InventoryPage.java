@@ -10,9 +10,9 @@ public class InventoryPage extends BasePage {
     public static final By CART_BUTTON = By.xpath("//a[@class='shopping_cart_link']");
     public static final By INVENTORY_FIRST_ITEM_NAME = By.xpath("//a[@id='item_2_title_link']/div");
     public static final By INVENTORY_FIRST_ITEM_DESC = By.xpath("//a[@id='item_2_title_link']/following-sibling::div");
-    public static final By INVENTORY_FIRST_ITEM_PRICE = By.xpath("//button[@data-test='remove-sauce-labs-onesie']//../div");
+    public static final By INVENTORY_FIRST_ITEM_PRICE = By.xpath("//button[contains(@id, 'sauce-labs-onesie')]//../div");
     public static final By INVENTORY_SECOND_ITEM_NAME = By.xpath("//a[@id='item_3_title_link']/div");
-    public static final By INVENTORY_SECOND_ITEM_PRICE = By.xpath("//button[@data-test='remove-test.allthethings()-t-shirt-(red)']//../div");
+    public static final By INVENTORY_SECOND_ITEM_PRICE = By.xpath("//button[contains(@id, 'test.allthethings()-t-shirt-(red)')]//../div");
 
 
     public InventoryPage(WebDriver driver) {
@@ -55,6 +55,9 @@ public class InventoryPage extends BasePage {
         driver.findElement(INVENTORY_FIRST_ITEM_NAME).click();
     }
 
+    public boolean inventoryItemNameDisplayed() {
+       return driver.findElement(INVENTORY_FIRST_ITEM_NAME).isDisplayed();
+    }
 
 
 }

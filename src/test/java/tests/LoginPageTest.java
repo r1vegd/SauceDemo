@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.InventoryPage;
 
 public class LoginPageTest extends BaseTest {
 
@@ -9,7 +10,8 @@ public class LoginPageTest extends BaseTest {
     public void positiveLogin() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        // TODO add checks after login
+        Assert.assertTrue(inventoryPage.inventoryItemNameDisplayed(),
+                "Переход в каталог не осуществлён");
     }
 
     @Test
