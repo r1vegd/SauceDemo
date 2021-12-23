@@ -1,3 +1,18 @@
+#Команды Maven
+
+1. _Просмотреть новые версии dependency в pom.xml файле_
+- mvn versions:display-dependency-updates
+2. _Обновить до последних версий dependency в pom.xml файле_ 
+- mvn versions:use-latest-versions
+3. Запустить указанный набор тестов suiteXmlFile через clean 
+- mvn clean test
+4. Запустить отдельные тесты разных классов
+- mvn -Dtest=LoginPageTest#positiveLogin+usernameShouldBeRequired test
+- mvn -Dtest=ProductsCriticalPathTest#oneProductShouldBeAddedIntoCart+checkInventoryItemPageProduct test
+
+
+---
+#Чеклист smoke тестирования
 Login Page
 - Авторизация пользователя с правами "standard"
 - Авторизация пользователя с правами "locked"
