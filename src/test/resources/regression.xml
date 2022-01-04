@@ -7,12 +7,12 @@
             <class name="tests.LoginPageTest"/>
 
         </classes>
-    </test> <!-- Test -->
+    </test>
 
     <test name="test 2">
         <classes>
             <class name="tests.ProductsCriticalPathTest"/>
         </classes>
-    </test> <!-- Test -->
+    </test>
 
 </suite>

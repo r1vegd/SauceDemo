@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -19,42 +20,52 @@ public class InventoryPage extends BasePage {
         super(driver);
     }
 
+    @Step("Add to cart first product")
     public void addToCartFirstProduct(String nameProduct) {
         driver.findElement(By.xpath(String.format(ADD_TO_CART_FIRST_ITEM_BUTTON, nameProduct))).click();
     }
 
+    @Step("Add to cart second product")
     public void addToCartSecondProduct(String nameProduct) {
         driver.findElement(By.xpath(String.format(ADD_TO_CART_SECOND_ITEM_BUTTON, nameProduct))).click();
     }
 
+    @Step("Get first product name from catalog")
     public String getInventoryFirstItemName() {
         return driver.findElement(INVENTORY_FIRST_ITEM_NAME).getText();
     }
 
+    @Step("Get first product description from catalog")
     public String getInventoryFirstItemDesc() {
         return driver.findElement(INVENTORY_FIRST_ITEM_DESC).getText();
     }
 
+    @Step("Get first product price from catalog")
     public String getInventoryFirstItemPrice() {
         return driver.findElement(INVENTORY_FIRST_ITEM_PRICE).getText();
     }
 
+    @Step("Get second product name from catalog")
     public String getInventorySecondItemName() {
         return driver.findElement(INVENTORY_SECOND_ITEM_NAME).getText();
     }
 
+    @Step("Get second product price from catalog")
     public String getInventorySecondItemPrice() {
         return driver.findElement(INVENTORY_SECOND_ITEM_PRICE).getText();
     }
 
+    @Step("Go to the cart")
     public void moveToCartPage() {
         driver.findElement(CART_BUTTON).click();
     }
 
+    @Step("Get into product detailed view")
     public void moveIntoInventoryItem() {
         driver.findElement(INVENTORY_FIRST_ITEM_NAME).click();
     }
 
+    @Step("First product name is displayed in detailed view")
     public boolean inventoryItemNameDisplayed() {
        return driver.findElement(INVENTORY_FIRST_ITEM_NAME).isDisplayed();
     }

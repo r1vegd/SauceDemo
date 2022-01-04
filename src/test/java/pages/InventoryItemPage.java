@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,22 +16,27 @@ public class InventoryItemPage extends BasePage {
         super(driver);
     }
 
+    @Step("Get product name from detailed view")
     public String getInventoryDetailedItemName() {
         return driver.findElement(INVENTORY_DETAILED_ITEM_NAME).getText();
     }
 
+    @Step("Get product description from detailed view")
     public String getInventoryDetailedItemDesc() {
         return driver.findElement(INVENTORY_DETAILED_ITEM_DESC).getText();
     }
 
+    @Step("Get product price from detailed view")
     public String getInventoryDetailedItemPrice() {
         return driver.findElement(INVENTORY_DETAILED_ITEM_PRICE).getText();
     }
 
+    @Step("Add product into cart from detailed view")
     public void addToCartDetailedItemButton() {
         driver.findElement(By.xpath(ADD_TO_CART_DETAILED_ITEM_BUTTON)).click();
     }
 
+    @Step("Back to catalog")
     public void backToProductsButton() {
         driver.findElement(By.xpath(BACK_TO_PRODUCTS_BUTTON)).click();
     }
