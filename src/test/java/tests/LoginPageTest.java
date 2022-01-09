@@ -18,7 +18,7 @@ public class LoginPageTest extends BaseTest {
         };
     }
 
-    @Test(retryAnalyzer = Retry.class)
+    @Test(retryAnalyzer = Retry.class, description = "Login as standard users")
     public void positiveLogin() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -26,7 +26,7 @@ public class LoginPageTest extends BaseTest {
                 "Переход в каталог не осуществлён");
     }
 
-    @Test(dataProvider = "loginData")
+    @Test(dataProvider = "loginData", description = "Negative login as all types of allowed users")
     public void usernameShouldBeRequired(String userName, String password, String errorMessage) {
         loginPage.open();
         loginPage.login(userName, password);

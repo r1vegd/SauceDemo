@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -21,42 +22,52 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
+    @Step("Get first product name in cart")
     public String getCartFirstItemName() {
         return driver.findElement(CART_FIRST_ITEM_NAME).getText();
     }
 
+    @Step("Get first product price in cart")
     public String getCartFirstItemPrice() {
         return driver.findElement(CART_FIRST_ITEM_PRICE).getText();
     }
 
+    @Step("Get first product description in cart")
     public String getCartFirstItemDesc() {
         return driver.findElement(CART_FIRST_ITEM_DESC).getText();
     }
 
+    @Step("Get second product name in cart")
     public String getCartSecondItemName() {
         return driver.findElement(CART_SECOND_ITEM_NAME).getText();
     }
 
+    @Step("Get second product price in cart")
     public String getCartSecondItemPrice() {
         return driver.findElement(CART_SECOND_ITEM_PRICE).getText();
     }
 
+    @Step("Get quantity of products in cart")
     public String getCartItemQty() {
         return driver.findElement(CART_ITEM_QTY).getText();
     }
 
+    @Step("Remove product from the cart")
     public void removeCartItem() {
         driver.findElement(CART_REMOVE_ITEM_BUTTON).click();
     }
 
+    @Step("Go into 'Continue shopping' section")
     public void continueCartShopping() {
         driver.findElement(CART_CONTINUE_SHOPPING_BUTTON).click();
     }
 
+    @Step("Proceed to checkout")
     public void checkoutCart() {
         driver.findElement(CART_CHECKOUT_BUTTON).click();
     }
 
+    @Step("'Item line' element is displayed")
     public boolean removedCartItemLineDisplayed() {
         return driver.findElement(REMOVED_CART_ITEM_LINE).isEnabled();
     }
