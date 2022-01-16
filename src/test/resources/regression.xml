@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2" name="Test suite" parallel="tests">
+<suite thread-count="2" name="Test suites" parallel="tests">
 
-    <test name="test 1">
+    <test name="Login tests">
         <classes>
             <class name="tests.LoginPageTest"/>
-
         </classes>
     </test>
 
-    <test name="test 2">
+    <test name="Critical Path Tests">
         <classes>
             <class name="tests.ProductsCriticalPathTest"/>
         </classes>

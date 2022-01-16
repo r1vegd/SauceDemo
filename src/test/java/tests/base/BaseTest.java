@@ -1,6 +1,7 @@
 package tests.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,6 +26,7 @@ public class BaseTest {
     protected CheckoutYourInformationPage checkoutYourInformationPage;
 
     @BeforeMethod
+    @Step("Browser launch")
     public void setUp(ITestContext testContext) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -40,6 +42,7 @@ public class BaseTest {
     }
 
     @AfterMethod
+    @Step("Browser quit")
     public void tearDown() {
         driver.quit();
     }
